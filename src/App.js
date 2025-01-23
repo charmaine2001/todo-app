@@ -15,8 +15,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Homee />} />
           <Route path="/Todos" element={<Todos />} />
-          {/* Add other routes as needed */}
           <Route path="/add-todo" element={<TodoForm />} />
+          <Route path="/todolist" element={<TodoList />} />
+          <Route path="/" element={<Todos />} />
           <Route path="/todolist" element={<TodoList />} />
           <Route path="/help" element={<Help />} />
           <Route path="/settings" element={<Settings />} /> 

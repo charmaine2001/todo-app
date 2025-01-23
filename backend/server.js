@@ -21,17 +21,30 @@ app.get('/api/todos', (req, res) => {
   });
 });
 
+// app.post('/api/todos', (req, res) => {
+//     const { title, dueDate, priority } = req.body;  // Add dueDate and priority
+//     db.run('INSERT INTO todos (title, dueDate, priority, completed) VALUES (?, ?, ?, ?)', 
+//       title, dueDate, priority, false, (err) => {
+//       if (err) {
+//         res.status(500).json({ message: 'Error creating todo' });
+//       } else {
+//         res.json({ message: 'Todo created successfully' });
+//       }
+//     });
+//   });
+
 app.post('/api/todos', (req, res) => {
-    const { title, dueDate, priority } = req.body;  // Add dueDate and priority
+    const { title, dueDate, priority } = req.body;  
     db.run('INSERT INTO todos (title, dueDate, priority, completed) VALUES (?, ?, ?, ?)', 
-      title, dueDate, priority, false, (err) => {
+      title, dueDate, priority, false, function(err) {
       if (err) {
-        res.status(500).json({ message: 'Error creating todo' });
+          res.status(500).json({ message: 'Error creating todo' });
       } else {
-        res.json({ message: 'Todo created successfully' });
+          // Return the created todo with its ID
+          res.json({ id: this.lastID, title, dueDate, priority, completed: false });
       }
     });
-  });
+});
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);

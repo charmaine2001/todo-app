@@ -12,16 +12,16 @@ function Homee(){
     return(
         <div>
             <TodoNavBar/>
-           <div className=" bg-blue-100 h-screen flex justify-center items-center">
+           <div className=" bg-blue-300 h-screen flex justify-center items-center">
             <div className="text-center">
-                <h1 className="text-10xl mb-4">
+                <h1 className="text-6xl  mb-4 font-bold">
                     Lets get planning!
                 </h1>
-                <p className="text-1g mb-8">
-                    List all the things you want to do.
+                <p className="text-lg font-extralight mb-8">
+                    List all the things you want to do!
 
                 </p>
-                <button onClick = {handleGetStarted} className="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 rounded">
+                <button onClick = {handleGetStarted} className="bg-blue-950 hover:bg-blue-800 text-white font-bold py-2 px-2 rounded-full text-">
                     Get Started
                 </button>
 
