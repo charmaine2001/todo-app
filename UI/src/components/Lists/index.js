@@ -1,6 +1,7 @@
 import TodoNavBar from '../TodoNavBar';
+import TodoList from './TodoList';
 
-function TodoList() {
+function Lists() {
     
     return (
         <div className="h-screen w-full flex flex-col p-4 bg-gray-100">
@@ -10,4 +11,4 @@ function TodoList() {
     );
 };
 
-export default TodoList; 
+export default Lists; 

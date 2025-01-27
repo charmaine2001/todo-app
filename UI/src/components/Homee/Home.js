@@ -7,7 +7,7 @@ function Homee(){
     const navigate = useNavigate();
 
     const handleGetStarted = () => {
-        navigate('/Todos');
+        navigate('/todolist');
     };
     return(
         <div>
@@ -21,7 +21,7 @@ function Homee(){
                     List all the things you want to do!
 
                 </p>
-                <button onClick = {handleGetStarted} className="bg-blue-950 hover:bg-blue-800 text-white font-bold py-2 px-2 rounded-full text-">
+                <button onClick = {handleGetStarted} className="bg-blue-950 hover:bg-blue-800 text-white font-bold py-2 px-2 rounded-full animate-bounce">
                     Get Started
                 </button>
 

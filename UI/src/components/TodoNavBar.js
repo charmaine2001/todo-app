@@ -21,7 +21,7 @@ function TodoNavBar() {
     return (
         <nav className="bg-navy-blue py-4">
             <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-                <h1 className="text-5xl text-white font-bold">
+                <h1 className="text-5xl text-white font-bold animate-pulse">
                     Todo App
                 </h1>
                 <div className="flex items-center">
@@ -32,7 +32,7 @@ function TodoNavBar() {
                     />
                     <button
                         className="ml-4 bg-gray-200 py-2 px-4 rounded-md text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        onClick={handleMenuClick} // Add click handler here
+                        onClick={handleMenuClick} 
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

@@ -918,8 +918,11 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "none",
-    "start": "node server.js"
+    "test": "jest",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "babel src --out-dir lib"
+    
   },
   "repository": {
     "type": "git",

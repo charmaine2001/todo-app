@@ -21,6 +21,7 @@ function App() {
           <Route path="/todolist" element={<TodoList />} />
           <Route path="/help" element={<Help />} />
           <Route path="/settings" element={<Settings />} /> 
+          <Route path="/Lists" element={<Todos />} />
         </Routes>
       </div>
     </Router>
