@@ -130,7 +130,7 @@ const TodoList = ({ todos = [], setTodos }) => {
     };
 
     
-    const addTodoToList = (newTodo) => {
+    const addTodo = (newTodo) => {
         setTodos((prevTodos) => [...prevTodos, newTodo]);
     };
 
@@ -156,7 +156,7 @@ const TodoList = ({ todos = [], setTodos }) => {
 
             
             <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <TodoForm addTodo={addTodoToList} closeModal={closeModal} />
+                <TodoForm addTodo={addTodo} closeModal={closeModal} />
             </Modal>
 
             

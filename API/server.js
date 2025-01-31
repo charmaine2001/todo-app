@@ -21,39 +21,35 @@ app.get('/api/todos', (req, res) => {
   });
 });
 
-// app.post('/api/todos', (req, res) => {
-//     const { title, dueDate, priority } = req.body;  // Add dueDate and priority
-//     db.run('INSERT INTO todos (title, dueDate, priority, completed) VALUES (?, ?, ?, ?)', 
-//       title, dueDate, priority, false, (err) => {
-//       if (err) {
-//         res.status(500).json({ message: 'Error creating todo' });
-//       } else {
-//         res.json({ message: 'Todo created successfully' });
-//       }
-//     });
-//   });
 
 app.post('/api/todos', (req, res) => {
-    const { title, dueDate, priority } = req.body;  
-    db.run('INSERT INTO todos (title, dueDate, priority, completed) VALUES (?, ?, ?, ?)', 
-      title, dueDate, priority, false, function(err) {
+  const { title, dueDate, priority } = req.body;
+  db.run(
+    'INSERT INTO todos (title, dueDate, priority, completed) VALUES (?, ?, ?, ?)',
+    [title, dueDate, priority, 0], 
+    function (err) {
       if (err) {
-          res.status(500).json({ message: 'Error creating todo' });
+        res.status(500).json({ message: 'Error creating todo' });
       } else {
-          // Return the created todo with its ID
-          // res.json({ id: this.lastID, title, dueDate, priority, completed: false });
-          res.status(201).json({ id: this.lastID, task });
+      
+        res.status(201).json({
+          id: this.lastID,
+          title,
+          dueDate,
+          priority,
+          completed: 0,
+        });
       }
-    });
+    }
+  );
 });
 
 app.put('/api/todos/:id', async (req, res) => {
   const { id } = req.params;
-  const { completed } = req.body; // Get the completed status (1 or 0)
+  const { completed } = req.body; 
 
   try {
-      const db = await openDB();
-      // Update the todo's completed status in the database
+      const db = await openDB()
       await db.run('UPDATE todos SET completed = ? WHERE id = ?', [completed, id]);
       res.status(200).send('Todo updated');
   } catch (error) {

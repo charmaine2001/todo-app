@@ -21,7 +21,7 @@ function TodoNavBar() {
     return (
         <nav className="bg-navy-blue py-4">
             <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-                <h1 className="text-5xl text-white font-bold animate-pulse">
+                <h1 className="text-5xl text-white font-bold animate-wiggle">
                     Todo App
                 </h1>
                 <div className="flex items-center">

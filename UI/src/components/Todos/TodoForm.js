@@ -8,47 +8,91 @@ function TodoForm({ addTodo, closeModal }) {
   const [isLoading, setIsLoading] = useState(false); 
   const [message, setMessage] = useState(''); 
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (taskName.trim() !== '' && dueDate) {
+  //     setIsLoading(true); 
+  //     setMessage('');
+
+  //     const newTodo = {
+  //       title: taskName,
+  //       dueDate: dueDate,
+  //       priority: priority,
+  //       completed: 0,
+  //     };
+
+  //     try {
+  //       const response = await fetch('http://localhost:5000/api/todos', {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify(newTodo),
+  //       });
+
+  //       if (!response.ok) {
+  //         throw new Error('Network response was not ok');
+  //       }
+
+  //       const createdTodo = await response.json();
+  //       addTodo(createdTodo); 
+
+  //       setMessage('Task Added Successfully!'); 
+  //       closeModal(); 
+  //     } catch (error) {
+  //       console.error('Error adding todo:', error);
+  //       setMessage('Failed to add task. Please try again.'); 
+  //     } finally {
+  //       setIsLoading(false); 
+  //     }
+  //   } else {
+  //     alert("Provide all required fields");
+  //   }
+  // };
+
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (taskName.trim() !== '' && dueDate) {
-      setIsLoading(true); 
-      setMessage('');
+  e.preventDefault();
+  if (taskName.trim() !== '' && dueDate) {
+    setIsLoading(true);
+    setMessage('');
 
-      const newTodo = {
-        title: taskName,
-        dueDate: dueDate,
-        priority: priority,
-        completed: 0,
-      };
+    const newTodo = {
+      title: taskName,
+      dueDate: dueDate,
+      priority: priority,
+      completed: 0,
+    };
 
-      try {
-        const response = await fetch('http://localhost:5000/api/todos', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newTodo),
-        });
+    try {
+      const response = await fetch('http://localhost:5000/api/todos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newTodo),
+      });
 
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-
-        const createdTodo = await response.json();
-        addTodo(createdTodo); 
-
-        setMessage('Task Added Successfully!'); 
-        closeModal(); 
-      } catch (error) {
-        console.error('Error adding todo:', error);
-        setMessage('Failed to add task. Please try again.'); 
-      } finally {
-        setIsLoading(false); 
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
-    } else {
-      alert("Provide all required fields");
+
+      const createdTodo = await response.json();
+      console.log('Created Todo:', createdTodo); // Log the response
+      addTodo(createdTodo); // Add the new todo to the state
+
+      setMessage('Task Added Successfully!');
+      closeModal();
+    } catch (error) {
+      console.error('Error adding todo:', error);
+      setMessage('Failed to add task. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
-  };
+  } else {
+    alert('Provide all required fields');
+  }
+};
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col mb-4 bg-transparent">
